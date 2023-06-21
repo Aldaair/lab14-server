@@ -1,0 +1,24 @@
+<h2>Agregar Película</h2>
+<form [formGroup]="peliculaForm" (ngSubmit)="enviarFormulario()">
+  <div>
+    <label>Título:</label>
+    <input type="text" formControlName="titulo" required>
+  </div>
+  <div>
+    <label>Director:</label>
+    <input type="text" formControlName="director" required>
+  </div>
+  <div>
+    <label>Clasificación:</label>
+    <input type="text" formControlName="clasificacion" required>
+  </div>
+  <div>
+    <label>Protagonista:</label>
+    <input type="text" formControlName="protagonista" required>
+  </div>
+  <div>
+    <label>Género:</label>
+    <input type="text" formControlName="genero" required>
+  </div>
+  <button type="submit">Guardar</button>
+</form>

@@ -1,0 +1,27 @@
+<h2>Editar Película</h2>
+<form [formGroup]="peliculaForm" (ngSubmit)="enviarFormulario()">
+  <div>
+    <label for="titulo">Título:</label>
+    <input type="text" id="titulo" formControlName="titulo" required>
+  </div>
+  <div>
+    <label for="director">Director:</label>
+    <input type="text" id="director" formControlName="director" required>
+  </div>
+  <div>
+    <label for="clasificacion">Clasificación:</label>
+    <input type="text" id="clasificacion" formControlName="clasificacion" required>
+  </div>
+  <div>
+    <label for="protagonista">Protagonista:</label>
+    <input type="text" id="protagonista" formControlName="protagonista" required>
+  </div>
+  <div>
+    <label for="genero">Género:</label>
+    <input type="text" id="genero" formControlName="genero" required>
+  </div>
+  <div>
+    <button type="submit">Guardar</button>
+    <button type="button" (click)="cancelarEdicion()">Cancelar</button>
+  </div>
+</form>

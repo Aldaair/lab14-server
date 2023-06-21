@@ -1,0 +1,47 @@
+<!-- Mostrar tarifas existentes -->
+<div *ngIf="tarifas.length > 0">
+  <table>
+    <thead>
+      <tr>
+        <th>Día</th>
+        <th>Precio</th>
+        <th>ID Cine</th>
+        <th>Acciones</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr *ngFor="let tarifa of tarifas; let i = index">
+        <td>{{ tarifa.dia }}</td>
+        <td>{{ tarifa.precio }}</td>
+        <td>{{ tarifa.id_cine }}</td>
+        <td>
+          <button (click)="eliminarTarifa(i)">Eliminar</button>
+        </td>
+      </tr>
+    </tbody>
+  </table>
+</div>
+<!-- Formulario para crear una nueva tarifa -->
+<h2>Nueva Tarifa</h2>
+<form (submit)="crearTarifa()">
+  <label>
+    Día:
+    <input type="text" [(ngModel)]="nuevaTarifa.dia" name="dia" required />
+  </label>
+  <label>
+    Precio:
+    <input
+      type="number"
+      [(ngModel)]="nuevaTarifa.precio"
+      name="precio"
+      required
+    />
+  </label>
+  <label>
+    Cine:
+    <select [(ngModel)]="nuevaTarifa.id_cine" name="id_cine" required>
+      <option *ngFor="let cine of cines" [value]="cine._id">{{ cine.nombre }}</option>
+    </select>
+  </label>
+  <button type="submit">Crear Tarifa</button>
+</form>

@@ -1,0 +1,44 @@
+
+<!-- Mostrar pasas existentes -->
+<div *ngIf="pasas.length > 0">
+  <table>
+    <thead>
+      <tr>
+        <th>Hora</th>
+        <th>Cine</th>
+        <th>Película</th>
+        <th>Acciones</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr *ngFor="let pasa of pasas; let i = index">
+        <td>{{ pasa.hora | date: 'dd/MM/yyyy HH:mm' }}</td>
+        <td>{{ obtenerNombreCine(pasa.id_cine) }}</td>
+        <td>{{ obtenerTituloPelicula(pasa.id_pelicula) }}</td>
+        <td>
+          <button (click)="eliminarPasa(i)">Eliminar</button>
+        </td>
+      </tr>
+    </tbody>
+  </table>
+</div>
+<form [formGroup]="pasaForm" (ngSubmit)="enviarFormulario()">
+    <div>
+      <label for="hora">Hora:</label>
+      <input type="datetime-local" id="hora" formControlName="hora" />
+    </div>
+    <div>
+      <label for="id_cine">Cine:</label>
+      <select id="id_cine" formControlName="id_cine">
+        <option *ngFor="let cine of cines" [value]="cine._id">{{ cine.nombre }}</option>
+      </select>
+    </div>
+    <div>
+      <label for="id_pelicula">Película:</label>
+      <select id="id_pelicula" formControlName="id_pelicula">
+        <option *ngFor="let pelicula of peliculas" [value]="pelicula._id">{{ pelicula.titulo }}</option>
+      </select>
+    </div>
+    <button type="submit">Guardar</button>
+  </form>
+  
