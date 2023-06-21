@@ -7,8 +7,8 @@ import { Producto } from '../models/producto';
   providedIn: 'root'
 })
 export class ProductoService {
-  url = 'http://localhost:4000/api/productos/';
-  pdf = 'http://localhost:4000/api/generate-pdf/';
+  url = 'http://localhost:3000/api/productos/';
+  pdf = 'http://localhost:3000/api/generate-pdf/';
 
   constructor(private http: HttpClient) { 
 

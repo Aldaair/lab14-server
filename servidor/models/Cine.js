@@ -18,12 +18,6 @@ const CineSchema = new Schema({
     type: String,
     required: true,
   },
-  pelicula: [
-    {
-      type: Schema.Types.ObjectId,
-      ref: "Pelicula",
-    },
-  ],
   tarifas: [
     {
       type: Schema.Types.ObjectId,

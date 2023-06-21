@@ -15,6 +15,16 @@ const getCines = async (req, res) => {
       res.status(500).send("Error al obtener los cines");
     });
 };
+const getPeliculas = async (req, res) => {
+  Pelicula.find({})
+    .then((cines) => {
+      res.json(cines);
+    })
+    .catch((error) => {
+      console.error(error);
+      res.status(500).send("Error al obtener los peloiculas");
+    });
+};
 const getTarifas = async (req, res) => {
   Tarifa.find({})
     .then((tarifas) => {
@@ -24,6 +34,35 @@ const getTarifas = async (req, res) => {
       console.error(error);
       res.status(500).send("Error al obtener las tarifas");
     });
+};
+const getPasas = async (req, res) => {
+  Pasa.find({})
+    .then((tarifas) => {
+      res.json(tarifas);
+    })
+    .catch((error) => {
+      console.error(error);
+      res.status(500).send("Error al obtener las pasa");
+    });
+};
+const getCinesConPeliculas = async (req, res) => {
+  try {
+    const cines = await Cine.find({});
+    const cinesConPeliculas = await Promise.all(
+      cines.map(async (cine) => {
+        console.log(cine._id);
+        const peliculas = await Pelicula.find({ _id: cine._id });
+        return {
+          cine,
+          peliculas,
+        };
+      })
+    );
+    res.json(cinesConPeliculas);
+  } catch (error) {
+    console.error(error);
+    res.status(500).send("Error al obtener los cines con películas");
+  }
 };
 const createCine = async (req, res) => {
   const { nombre, calle, numero, telefono, dia, id_tarifa } = req.body;
@@ -109,4 +148,7 @@ module.exports = {
   createPasa,
   createPelicula,
   getTarifas,
+  getPeliculas,
+  getCinesConPeliculas,
+  getPasas,
 };

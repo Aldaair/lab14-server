@@ -1,11 +1,13 @@
 const Producto = require("../models/Producto");
 const User = require("../models/User");
+const Cine = require("../models/Cine");
+
 const { jsPDF } = require('jspdf')
 require('jspdf-autotable');
 
 exports.generarPDf = async(req,res) =>{
     try {
-        const user =  await User.find().lean();
+        const cines =  await Cine.find().lean();
         const productos = await Producto.find().lean();
         const nombreArchivo = 'MisProductos.pdf';
         const doc = new jsPDF();
@@ -25,8 +27,8 @@ exports.generarPDf = async(req,res) =>{
         doc.autoTable({
         theme: 'grid',
         startY: 90,
-        head: [[`Productos (${productos.length})`, 'Categoría','Precio','Ubicacion','Fecha de Creacion'],],
-        body: productos.map(producto => [producto.producto, producto.categoria, producto.precio,producto.ubicacion,producto.fechaCreacion])
+        head: [[`Productos (${cine.length})`, 'Categoría','Precio','Ubicacion','Fecha de Creacion'],],
+        body: cines.map(cine => [cine.nombre, cine.calle, cine.numero,cine.telefono,cine.id_tarifa])
         });
 
         

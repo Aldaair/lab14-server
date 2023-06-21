@@ -7,14 +7,21 @@ const {
   createTarifa,
   createPelicula,
   createPasa,
-  getTarifas
+  getTarifas,
+  getPeliculas,
+  getCinesConPeliculas,
+  getPasas
 } = require("../controllers/cine.controller");
 
-router.post("/cine", createCine);
+router.post("/cines", createCine);
 router.post("/pasa", createPasa);
-router.post("/pelicula", createPelicula);
+router.post("/peliculas", createPelicula);
 router.get("/tarifas", getTarifas);
+router.get("/cineypeli", getCinesConPeliculas);
+router.get("/peliculas", getPeliculas);
 router.post("/tarifas", createTarifa);
 router.get("/cines", getCines);
+router.get("/pasas", getPasas);
+
 
 module.exports = router;

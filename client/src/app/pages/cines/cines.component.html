@@ -1,59 +1,75 @@
 <app-navbar></app-navbar>
 <section class="content">
-  <div class="container-fluid">
+<div class="container-fluid">
     <div class="row m-t-sm">
-      <div class="col-md-12">
-        <div class="panel">
-          <div class="panel-body">
-            <div class="col-md-12 col-sm-12" id="form">
-              <div class="panel panel-filled">
+        <div class="col-md-15">
+            <div class="panel">
                 <div class="panel-body">
-                  <div class="view-header">
-                    <div class="header-icon">
-                      <i class="pe page-header-icon pe-7s-map"></i>
+                    <div class="col-md-12 col-sm-12" id="list_alumnos">
+                        <div class="panel panel-filled">
+                            <div class="panel-body">
+                                <div class="view-header">
+                                    <div class="header-icon">
+                                        <i class="pe page-header-icon pe-7s-note2"></i>
+                                    </div>
+                                    <div class="header-title">
+                                        <h3>Cines</h3>
+                                        <small>
+                                            Cines Registrados
+                                        </small>
+                                    </div>
+                                    <hr>
+                                </div>
+                                
+                                <br>
+                                <br>
+                                    <table *ngIf="listCines.length > 0" class="table table-hover table-striped">
+                                        <thead>
+                                            <tr>
+                                                <th>Nombre</th>
+                                                <th>Calle</th>
+                                                <th>Numero</th>
+                                                <th>Telefono</th>
+                                                <th>Tarifa</th>
+                                            </tr>
+                                        </thead>
+                                        <tbody id="datos">
+                                            <tr *ngFor="let cine of listCines">
+                                                <td>{{ cine.nombre }}</td>
+                                                <td>{{ cine.calle }}</td>
+                                                <td>{{ cine.numero }}</td>
+                                                <td>{{ cine.telefono }}</td>
+                                                <td>{{ cine.id_tarifa }}</td>
+                                            </tr>
+                                        </tbody>
+                                    </table>
+                                <br>
+                                <table *ngIf="listCines.length > 0" class="table table-hover table-striped">
+                                    <thead>
+                                        <tr>
+                                            <th>Nombre</th>
+                                            <th>Calle</th>
+                                            <th>Numero</th>
+                                            <th>Telefono</th>
+                                            <th>Tarifa</th>
+                                        </tr>
+                                    </thead>
+                                    <tbody id="datos">
+                                        <tr *ngFor="let cine of listCines">
+                                            <td>{{ cine.nombre }}</td>
+                                            <td>{{ cine.calle }}</td>
+                                            <td>{{ cine.numero }}</td>
+                                            <td>{{ cine.telefono }}</td>
+                                            <td>{{ cine.id_tarifa }}</td>
+                                        </tr>
+                                    </tbody>
+                                </table>
+                            </div>
+                        </div>
                     </div>
-                    <div class="header-title">
-                      <h3>TARIFAS</h3>
-                    </div>
-                  </div>
-            
                 </div>
-              </div>
             </div>
-            <div class="col-md-12 col-sm-12" id="form">
-              <div class="panel panel-filled">
-                <div class="panel-body">
-                  <div class="row">
-                    <div class="col-sm-12">
-                    </div>
-                  </div>
-                  <div class="table-responsive">
-                    
-                  </div>
-                  <h2>Agregar Tienda</h2>
-                  <form (ngSubmit)="createTarifa()">
-                    <div>
-                      <label for="name">id_tarifa:</label>
-                      <input class="input-field" type="text" id="id_tarifa" name="id_tarifa" [(ngModel)]="newTarifa.id_tarifa" required>
-                    </div>
-                    <div>
-                      <label for="dia">dia:</label>
-                      <input class="input-field" type="text" id="dia" name="dia" [(ngModel)]="newTarifa.dia" required>
-                    </div>
-                    <div>
-                      <label for="precio">precio:</label>
-                      <input class="input-field" type="number" id="precio" name="precio" [(ngModel)]="newTarifa.precio" required>
-                    </div>
-                    
-                    <button type="submit">Agregar</button>
-                  </form>
-                  
-                </div>
-              </div>
-            </div>
-          </div>
         </div>
-      </div>
     </div>
-  </div>
+</div>
 </section>

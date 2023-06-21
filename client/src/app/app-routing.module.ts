@@ -5,11 +5,12 @@ import { EditarProductosComponent } from './pages/productos/editar-productos/edi
 import { ListarProductosComponent } from './pages/productos/listar-productos/listar-productos.component';
 import { CreateUserComponent } from './pages/users/create-user/create-user.component';
 import { LoginComponent } from './pages/users/login/login.component';
+import { CinesComponent } from './pages/cines/cines.component';
 
 const routesInicio: Routes = [
   { path: '', component: LoginComponent },
   { path: 'crear-usuario', component: CreateUserComponent },
-  
+  { path: 'cines', component: CinesComponent },
   { path: 'listar-productos', component: ListarProductosComponent },
   { path: 'crear-productos', component: CrearProductosComponent },
   { path: 'editar-producto/:id', component: EditarProductosComponent },

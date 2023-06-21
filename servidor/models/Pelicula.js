@@ -25,6 +25,5 @@ const PeliculaSchema = new Schema({
   },
 });
 
-const Pelicula = model("Pelicula", PeliculaSchema);
+module.exports = model('Pelicula', PeliculaSchema)
 
-module.exports = Pelicula;
