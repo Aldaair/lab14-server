@@ -9,12 +9,6 @@ const TarifaSchema = new Schema({
     type: Number,
     required: true,
   },
-  id_cine: [
-    {
-      type: Schema.Types.ObjectId,
-      ref: "Cine",
-    },
-  ],
 });
 
 module.exports = model("Tarifa", TarifaSchema);

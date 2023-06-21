@@ -7,7 +7,7 @@ import { Cine } from '../models/Cine';
   providedIn: 'root'
 })
 export class CineService {
-  private apiUrl = 'http://localhost:3000/api/cines/';
+  private apiUrl = 'http://localhost:3000/api/cines';
 
   constructor(private http: HttpClient) {}
 

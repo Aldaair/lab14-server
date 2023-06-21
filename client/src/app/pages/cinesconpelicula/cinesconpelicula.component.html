@@ -1,45 +1,43 @@
-<h1>Cines con Películas</h1>
-<a href=""></a>
-<a (click)="generarReporte()">ver reporte</a>&nbsp;&nbsp;
+<app-navbar></app-navbar>
 
-<!-- Búsqueda por cine -->
-<form (ngSubmit)="buscarPorCine()">
-  <label for="cine">Buscar por cine:</label>
-  <input type="text" id="cine" [(ngModel)]="busquedaCine" name="cine" />
-  <button type="submit">Buscar</button>
-</form>
+<section class="content">
+  <h1>Cines con Películas</h1>
 
-<!-- Búsqueda por película -->
-<form (ngSubmit)="buscarPorPelicula()">
-  <label for="pelicula">Buscar por película:</label>
-  <input
-    type="text"
-    id="pelicula"
-    [(ngModel)]="busquedaPelicula"
-    name="pelicula"
-  />
-  <button type="submit">Buscar</button>
-</form>
+  <a href=""></a>
+  <a (click)="generarReporte()">Ver reporte</a>&nbsp;&nbsp;
 
-<!-- Resultados de la búsqueda -->
-<div *ngIf="resultadosBusqueda.length > 0">
-  <h2>Resultados de la búsqueda:</h2>
-  <ul>
-    <li *ngFor="let resultado of resultadosBusqueda">
-      {{ resultado.cine.nombre }}
-      <span *ngFor="let pelicula of resultado.peliculas"
-        >| {{ pelicula.titulo }} |
-      </span>
-    </li>
-  </ul>
-</div>
+  <!-- Búsqueda por cine -->
+  <form (ngSubmit)="buscarPorCine()">
+    <label for="cine">Buscar por cine:</label>
+    <input type="text" id="cine" [(ngModel)]="busquedaCine" name="cine" />
+    <button type="submit">Buscar</button>
+  </form>
 
-<!-- Mostrar todos los cines con películas -->
-<div *ngFor="let cine of cinesConPeliculas">
-  <h2>{{ cine.cine.nombre }}</h2>
-  <ul>
-    <li *ngFor="let pelicula of cine.peliculas">
-      {{ pelicula.titulo }}
-    </li>
-  </ul>
-</div>
+  <!-- Búsqueda por película -->
+  <form (ngSubmit)="buscarPorPelicula()">
+    <label for="pelicula">Buscar por película:</label>
+    <input type="text" id="pelicula" [(ngModel)]="busquedaPelicula" name="pelicula" />
+    <button type="submit">Buscar</button>
+  </form>
+
+  <!-- Resultados de la búsqueda -->
+  <div *ngIf="resultadosBusqueda.length > 0">
+    <h2>Resultados de la búsqueda:</h2>
+    <ul>
+      <li *ngFor="let resultado of resultadosBusqueda">
+        {{ resultado.cine.nombre }}
+        <span *ngFor="let pelicula of resultado.peliculas">| {{ pelicula.titulo }} |</span>
+      </li>
+    </ul>
+  </div>
+
+  <!-- Mostrar todos los cines con películas -->
+  <div *ngFor="let cine of cinesConPeliculas">
+    <h2>{{ cine.cine.nombre }}</h2>
+    <ul>
+      <li *ngFor="let pelicula of cine.peliculas">
+        {{ pelicula.titulo }}
+      </li>
+    </ul>
+  </div>
+</section>

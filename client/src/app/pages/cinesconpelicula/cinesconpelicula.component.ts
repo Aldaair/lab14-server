@@ -6,38 +6,40 @@ import { Pelicula } from 'src/app/models/Pelicula';
 @Component({
   selector: 'app-cinesconpelicula',
   templateUrl: './cinesconpelicula.component.html',
-  styleUrls: ['./cinesconpelicula.component.css']
+  styleUrls: ['./cinesconpelicula.component.css'],
 })
 export class CinesconpeliculaComponent {
   cinesConPeliculas: any[] = [];
   resultadosBusqueda: any[] = [];
-  busquedaCine: string = "";
-  busquedaPelicula: string = "";
+  busquedaCine: string = '';
+  busquedaPelicula: string = '';
 
-  constructor(private cinesConPeliculaService: CinesconpeliculaService, private _reporteService: ReporteService) {
+  constructor(
+    private cinesConPeliculaService: CinesconpeliculaService,
+    private _reporteService: ReporteService
+  ) {
     this.getCinesConPeliculas();
   }
-  
-  
+
   generarReporte() {
     this._reporteService.getPDF().subscribe(
       (response: Blob) => {
         // Crear una URL para el archivo PDF
-        console.log(response)
+        console.log(response);
         const url = URL.createObjectURL(response);
-  
+
         // Abrir el PDF en una nueva ventana/tab
         window.open(url);
-  
+
         // Descargar el PDF utilizando un enlace de descarga
         const a = document.createElement('a');
         a.href = url;
         a.download = 'CinesYPeliculas.pdf';
         a.style.display = 'none';
-  
+
         document.body.appendChild(a);
         a.click();
-  
+
         // Limpiar la URL y el enlace de descarga
         URL.revokeObjectURL(url);
         document.body.removeChild(a);
@@ -47,23 +49,49 @@ export class CinesconpeliculaComponent {
       }
     );
   }
-  
+
   getCinesConPeliculas() {
-    this.cinesConPeliculaService.getCinesConPeliculas()
-      .subscribe(
-        (data: any[]) => {
-          this.cinesConPeliculas = data;
-        },
-        (error) => {
-          console.error(error);
-        }
-      );
+    this.cinesConPeliculaService.getCinesConPeliculas().subscribe(
+      (data: any[]) => {
+        this.cinesConPeliculas = data;
+      },
+      (error) => {
+        console.error(error);
+      }
+    );
   }
 
+  /* buscarPorCine() {
+    if (this.busquedaCine) {
+      this.resultadosBusqueda = this.cinesConPeliculas.filter((cine) =>
+        cine?.cine?.nombre
+          .toLowerCase()
+          .includes(this.busquedaCine.toLowerCase())
+      );
+    } else {
+      this.resultadosBusqueda = [];
+    }
+    console.log(this.resultadosBusqueda);
+  }
+  buscarPorPelicula() {
+    if (this.busquedaPelicula) {
+      this.resultadosBusqueda = this.cinesConPeliculas.filter((cine) =>
+        cine.peliculas.some((pelicula: any) =>
+          pelicula.titulo
+            .toLowerCase()
+            .includes(this.busquedaPelicula.toLowerCase())
+        )
+      );
+    } else {
+      this.resultadosBusqueda = [];
+    }
+    console.log(this.resultadosBusqueda);
+  } */
   buscarPorCine() {
     if (this.busquedaCine) {
-      this.resultadosBusqueda = this.cinesConPeliculas.filter(cine => cine.cine.nombre.toLowerCase().includes(this.busquedaCine.toLowerCase()));
-      console.log(this.resultadosBusqueda)
+      this.resultadosBusqueda = this.cinesConPeliculas.filter(cine =>
+        cine.cine.nombre.toLowerCase().includes(this.busquedaCine.toLowerCase())
+      );
     } else {
       this.resultadosBusqueda = [];
     }
@@ -71,20 +99,35 @@ export class CinesconpeliculaComponent {
 
   buscarPorPelicula() {
     if (this.busquedaPelicula) {
+      this.resultadosBusqueda = this.cinesConPeliculas.filter(cine =>
+        cine.peliculas.some((pelicula: any) =>
+          pelicula.titulo.toLowerCase().includes(this.busquedaPelicula.toLowerCase())
+        )
+      );
+    } else {
+      this.resultadosBusqueda = [];
+    }
+  }
+  
+  /* buscarPorPelicula() {
+    if (this.busquedaPelicula) {
       this.resultadosBusqueda = [];
       this.cinesConPeliculas.forEach(cine => {
         const peliculasEncontradas = cine.peliculas.filter((pelicula: Pelicula) => pelicula.titulo.toLowerCase().includes(this.busquedaPelicula.toLowerCase()));
+        console.log(peliculasEncontradas)
         if (peliculasEncontradas.length > 0) {
           peliculasEncontradas.forEach((pelicula: Pelicula) => {
+            console.log(cine)
             this.resultadosBusqueda.push({
-              cine: cine.cine,
+              cine: cine?.cine?.nombre,
               pelicula: pelicula
             });
           });
+          console.log(this.resultadosBusqueda)
         }
       });
     } else {
       this.resultadosBusqueda = [];
     }
-  }
+  } */
 }

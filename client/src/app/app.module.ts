@@ -20,6 +20,7 @@ import { PeliculaFormularioComponent } from './pages/pelicula-formulario/pelicul
 import { EditarPeliculaComponent } from './pages/editar-pelicula/editar-pelicula.component';
 import { PasaComponent } from './pages/pasa/pasa.component';
 import { CinesconpeliculaComponent } from './pages/cinesconpelicula/cinesconpelicula.component';
+import { EditarTarifaComponent } from './pages/editar-tarifa/editar-tarifa.component';
 
 
 @NgModule({
@@ -38,7 +39,8 @@ import { CinesconpeliculaComponent } from './pages/cinesconpelicula/cinesconpeli
     PeliculaFormularioComponent,
     EditarPeliculaComponent,
     PasaComponent,
-    CinesconpeliculaComponent
+    CinesconpeliculaComponent,
+    EditarTarifaComponent
   ],
   imports: [
     BrowserModule,

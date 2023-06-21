@@ -93,7 +93,6 @@ export class PasaComponent implements OnInit {
   }
 
   obtenerNombreCine(idCine: string): string {
-    console.log(idCine);
     const cine = this.cines.find((cine) => cine._id === idCine);
     return cine ? cine.nombre : '';
   }

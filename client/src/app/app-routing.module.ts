@@ -12,6 +12,7 @@ import { PeliculaFormularioComponent } from './pages/pelicula-formulario/pelicul
 import { EditarPeliculaComponent } from './pages/editar-pelicula/editar-pelicula.component';
 import { PasaComponent } from './pages/pasa/pasa.component';
 import { CinesconpeliculaComponent } from './pages/cinesconpelicula/cinesconpelicula.component';
+import { EditarTarifaComponent } from './pages/editar-tarifa/editar-tarifa.component';
 
 const routesInicio: Routes = [
   { path: '', component: LoginComponent },
@@ -23,6 +24,7 @@ const routesInicio: Routes = [
   { path: 'crear-pelicula', component: PeliculaFormularioComponent },
   { path: 'pasa', component: PasaComponent },
   { path: 'tarifas', component: TarifaComponent },
+  { path: 'editar-tarifa/:id', component: EditarTarifaComponent },
   { path: 'listar-productos', component: ListarProductosComponent },
   { path: 'crear-productos', component: CrearProductosComponent },
   { path: 'editar-producto/:id', component: EditarProductosComponent },

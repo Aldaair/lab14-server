@@ -23,10 +23,6 @@ app.use('/api',require('./routes/pasa'))
 app.use('/api',require('./routes/pdf'))
 
 
-
-
-
-
 app.listen(config.port, () => {
     console.log('El servidor por el puerto 3000')
 })

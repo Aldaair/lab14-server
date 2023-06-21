@@ -1,6 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { FormGroup, FormBuilder, Validators } from '@angular/forms';
-import { ActivatedRoute, Router } from '@angular/router';
+import { Router } from '@angular/router';
 import { Pelicula } from 'src/app/models/Pelicula';
 import { PeliculasService } from 'src/app/services/peliculas.service';
 
@@ -15,19 +15,9 @@ export class EditarPeliculaComponent implements OnInit {
   constructor(
     private formBuilder: FormBuilder,
     private peliculaService: PeliculasService,
-    private route: ActivatedRoute,
     private router: Router
   ) {}
 
-  /* ngOnInit(): void {
-    this.inicializarFormulario();
-    this.route.params.subscribe((params) => {
-      const peliculaId = params['id'];
-      if (peliculaId) {
-        this.cargarPelicula(peliculaId);
-      }
-    });
-  } */
   ngOnInit(): void {
     this.inicializarFormulario();
     const peliculaId = history.state.pelicula._id;

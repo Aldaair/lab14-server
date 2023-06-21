@@ -3,6 +3,7 @@ import { Tarifa } from 'src/app/models/Tarifa';
 import { Cine } from 'src/app/models/Cine';
 import { CineService } from 'src/app/services/cine.service';
 import { TarifaService } from 'src/app/services/tarifa.service';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-tarifa',
@@ -13,9 +14,13 @@ export class TarifaComponent implements OnInit {
   tarifas: Tarifa[] = [];
   cines: Cine[] = [];
 
-  nuevaTarifa: Tarifa = new Tarifa('', 0, '');
+  nuevaTarifa: Tarifa = new Tarifa('', 0);
 
-  constructor(private tarifaService: TarifaService, private cineService: CineService) {}
+  constructor(
+    private tarifaService: TarifaService,
+    private cineService: CineService,
+    private router: Router
+  ) {}
 
   ngOnInit() {
     this.obtenerTarifas();
@@ -26,6 +31,7 @@ export class TarifaComponent implements OnInit {
     this.tarifaService.obtenerTarifas().subscribe(
       (response: Tarifa[]) => {
         this.tarifas = response;
+        console.log(this.tarifas);
       },
       (error) => {
         console.error(error);
@@ -48,7 +54,7 @@ export class TarifaComponent implements OnInit {
     this.tarifaService.crearTarifa(this.nuevaTarifa).subscribe(
       (response) => {
         this.obtenerTarifas(); // Actualizar la lista de tarifas
-        this.nuevaTarifa = new Tarifa('', 0, ''); // Limpiar el formulario
+        this.nuevaTarifa = new Tarifa('', 0); // Limpiar el formulario
       },
       (error) => {
         console.error(error);
@@ -56,26 +62,19 @@ export class TarifaComponent implements OnInit {
     );
   }
 
-  actualizarTarifa(index: number, tarifa: Tarifa) {
-    /* this.tarifaService.actualizarTarifa(tarifa).subscribe(
-      (response) => {
-        // Tarifa actualizada correctamente
-      },
-      (error) => {
-        console.error(error);
-      }
-    ); */
+  eliminarTarifa(tarifa: Tarifa): void {
+    if (tarifa._id === undefined) {
+      return;
+    }
+    console.log(tarifa._id)
+    this.tarifaService.eliminarTarifa(tarifa._id).subscribe(() => {
+      this.obtenerTarifas();
+    });
   }
-
-  eliminarTarifa(index: number) {
-    /* const tarifa = this.tarifas[index];
-    this.tarifaService.eliminarTarifa(tarifa._id).subscribe(
-      () => {
-        this.tarifas.splice(index, 1); // Eliminar la tarifa de la lista
-      },
-      (error) => {
-        console.error(error);
-      }
-    ); */
+  editarTarifa(tarifa: Tarifa): void {
+    console.log(tarifa)
+    this.router.navigate(['/editar-tarifa', tarifa._id], {
+      state: { tarifa },
+    });
   }
 }

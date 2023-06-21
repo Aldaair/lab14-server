@@ -1,4 +1,4 @@
-use simplejwt; 
+use simplejwt;
 
 var cines = [
   {
@@ -32,8 +32,6 @@ var cines = [
     telefono: "555-7890",
   },
 ];
-
-db.cines.insertMany(cines);
 
 var peliculas = [
   {
@@ -71,8 +69,7 @@ var peliculas = [
     protagonista: "Carolina Vargas",
     genero: "Fantasía",
   },
-  // Agrega más películas según tus necesidades...
 ];
 
+db.cines.insertMany(cines);
 db.peliculas.insertMany(peliculas);
-

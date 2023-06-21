@@ -5,11 +5,14 @@ const {
   createCine,
   getCines,
   getCinesConPeliculas,
+  deleteCine,
 } = require("../controllers/cine.controller");
 
 router.post("/cines", createCine);
 router.get("/cineypeli", getCinesConPeliculas);
 router.get("/cines", getCines);
+router.delete("/cines/:id", deleteCine);
+
 
 
 

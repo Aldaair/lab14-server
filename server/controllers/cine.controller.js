@@ -51,9 +51,21 @@ const createCine = async (req, res) => {
     res.status(500).send("Hubo un error");
   }
 };
+const deleteCine = async (req, res) => {
+  const { id } = req.params;
+  console.log(id)
+  try {
+    await Cine.findByIdAndDelete(id);
+    res.json({ message: "Cine eliminado" });
+  } catch (error) {
+    console.error(error);
+    res.status(500).send("Error al eliminar el cine");
+  }
+};
 
 module.exports = {
   getCines,
   createCine,
   getCinesConPeliculas,
+  deleteCine
 };

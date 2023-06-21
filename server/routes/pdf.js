@@ -1,6 +1,6 @@
 //Rutas producto
 const express = require("express");
-const { generarPDF } = require("../controllers/pdfController");
+const { generarPDF } = require("../controllers/pdf.controller");
 
 const router = express.Router();
 
