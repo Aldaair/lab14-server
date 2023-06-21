@@ -36,10 +36,6 @@ export class ListarProductosComponent implements OnInit{
     
     this._productoService.getPDF().subscribe(response => {
       const file = new Blob([response], { type: 'application/pdf' });
-<<<<<<< HEAD
-=======
-
->>>>>>> a1632601e17e009f551a888672ab0be3a4113f22
       const url = URL.createObjectURL(file);
       window.open(url)
 
